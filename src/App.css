@@ -27,7 +27,158 @@
 .App-link {
   color: #61dafb;
 }
-
+a.selected{
+  color: red!important;
+}
+.login-card{
+  width: 100%;
+  margin: auto;
+  background-color: #de00006e;
+  height: calc(100vh - 56px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-card > div > h1{
+  font-weight: normal;
+  font-size: 23px;
+  padding-bottom: 25px;
+}
+.login-card > div{
+  background-color: antiquewhite;
+  padding: 100px;
+  border-radius: 18px;
+  display: block;
+  box-shadow: -1px 2px 15px -4px #fff5f0;
+}
+.login-card > div > div > form >select{
+  width: 100%;
+  height: 45px;
+  border: 0px;
+  padding-left: 20px;
+}
+.login-card > div > div > form > button{
+  height: 45px;
+  width: 100%;
+  background-color: #de00006e;
+  margin-top: 30px;
+  color: #000000c2;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.newQuestionCard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 56px);
+  background-color: #de00006e;
+}
+.newQuestionCard > div{
+  padding: 100px;
+  height: 80%;
+  background-color: antiquewhite;
+  border-radius: 18px;
+  display: block;
+  box-shadow: -1px 2px 15px -4px #fff5f0;
+}
+.newQuestionCard > div > h2{
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  margin-bottom: 20px;
+}
+.newQuestionCard > div > span{
+  line-height: 50px;
+}
+.newQuestionCard > div > h4{
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  margin-bottom: 20px;
+}
+.newQuestionCard > div > form{
+  display: block;
+  width: 100%;
+}
+.newQuestionCard > div > form >  div > input{
+  width: 100%;
+  height: 45px;
+  border: 0px;
+  padding-left: 10px;
+}
+.newQuestionCard > div > form >  div > span{
+  line-height: 50px;
+  color: red;
+  font-weight: bold;
+}
+.newQuestionCard > div > form >  button{
+  height: 45px;
+  width: 100%;
+  background-color: #de00006e;
+  margin-top: 30px;
+  color: #000000c2;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.leaderBoard{
+  min-height: 100vh
+;
+  width: 50%;
+  margin: auto;
+  background-color: #de00001f;
+}
+.buttons-handler >  button{
+  width: fit-content;
+  height: 45px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #de00006e;
+}
+.buttons-handler{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.questionHolder > div{
+  background: #fff;
+  width: 75%;
+  margin: auto;
+  border-radius: 15px;
+}
+.questionHolder > div > div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-body > .profileImage-holder{
+  min-height: 100%;
+  width: 40%;
+}
+.profileImage-holder > img{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.infoProfile-holder{
+  width: 60%;
+}
+.card-body{
+  text-align: left;
+}
+.card-body > div > a{
+  width: 100%;
+  height: 45px;
+  background-color: #de00006e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
