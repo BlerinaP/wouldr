@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
 
-const NavBar = () => {
+const NavBar = (logged) => {
     return(
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -26,6 +26,14 @@ const NavBar = () => {
                                 <NavLink to="/logout" className="nav-link"  exact activeClassName="selected">Logout</NavLink>
                             </li>
                         </ul>
+                    </div>
+                    <div className="d-flex align-items-center">
+                        <h1 style={{color: "#fff", fontSize: '20px'}}>
+                            Welcome {logged.logged.name}
+                        </h1>
+                        <div className="profileImage-holder-nav ml-4">
+                            <img src={logged.logged.avatarURL} alt=""/>
+                        </div>
                     </div>
                 </div>
             </nav>

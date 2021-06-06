@@ -1,11 +1,13 @@
 import React from 'react'
 import {handleAddingQuestion} from "../Redux/Actions";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom"
 
 class NewQuestion extends React.Component{
     state={
         option_one: '',
-        option_two: ''
+        option_two: '',
+        home: false
     };
 
     changeOptionOne = (e) => {
@@ -25,9 +27,15 @@ class NewQuestion extends React.Component{
         let optionOneText = this.state.option_one
         let optionTwoText = this.state.option_two
         this.props.dispatch(handleAddingQuestion(optionOneText, optionTwoText))
+        this.setState(() => ({
+            home: true
+        }))
     };
 
     render(){
+        if(this.state.home === true){
+            return <Redirect to="/"/>
+        }
         return(
             <div className="newQuestionCard">
                 <div>

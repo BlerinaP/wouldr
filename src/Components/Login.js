@@ -18,7 +18,7 @@ class Login extends React.Component{
         }));
     };
     handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
        this.props.dispatch(handleAuth(this.state.selected))
     };
     render(){
@@ -27,8 +27,10 @@ class Login extends React.Component{
                 <div>Loading...</div>
             )
         }
+
+        const {from} = this.props.location.state || {from: {pathname: '/'}};
         if(this.props.authed === true){
-            return <Redirect to="/"/>
+            return <Redirect to={from}/>
         }
         return(
             <div className="login-card">
@@ -36,7 +38,7 @@ class Login extends React.Component{
                     <h1>Welcome To Would You Rather App</h1>
                     <p>Please sign in to continue</p>
                     <div>
-                        <form onSubmit={(e) => this.handleSubmit(e)}>
+                        <form onSubmit={this.handleSubmit}>
                             <select className="form-select" aria-label="Default select example" defaultValue="0" onChange={(e) => this.handleSelected(e)}>
                                 <option  value="selected">Select User</option>
                                 {Object.keys(this.props.users).map((user) => {

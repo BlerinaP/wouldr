@@ -187,7 +187,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
             [qid]: answer
           }
         }
-      }
+      };
 
       questions = {
         ...questions,

@@ -1,4 +1,4 @@
-import {getUsers, getUser, getQuestions, saveQuestion} from "../../api";
+import {getUsers, getUser, getQuestions, saveQuestion, saveQuestionAnswer} from "../../api";
 
 export const GET_USERS = 'GET_USERS';
 export const LOGIN = 'LOGIN';
@@ -6,6 +6,8 @@ export const LOGOUT = 'LOGOUT';
 export const GET_QUESTIONS = 'GET_QUESTIONS '
 export const ADD_QUESTION = 'ADD_QUESTION'
 export const ADD_QUESTION_USER = 'ADD_QUESTION_USER'
+export const SAVE_ANSWER = 'SAVE_ANSWER'
+export const SAVE_USER_ANSWER = 'SAVE_USER_ANSWER'
 
 export function getAllUsers(users){
     return{
@@ -87,3 +89,32 @@ export function handleAddingQuestion (optionOneText, optionTwoText, cb){
         }).then(cb)
     }
 }
+
+export function saveUserAnsw(authedUser, qid, answer){
+    return{
+        type: SAVE_USER_ANSWER,
+        authedUser,
+        qid,
+        answer
+    }
+}
+
+export function saveQuestionAnsw(authedUser, qid, answer){
+    return{
+        type: SAVE_ANSWER,
+        authedUser,
+        qid,
+        answer
+    }
+}
+
+export const handleAddingQstAnsw = (qid, answer) => {
+    return(dispatch, getState) => {
+        const {authenticated} = getState();
+        const authedUser = authenticated.loggedInUser.id;
+        saveQuestionAnswer({authedUser, qid: qid, answer: answer}).then(() => {
+            dispatch(saveQuestionAnsw(authedUser, qid, answer));
+            dispatch(saveUserAnsw(authedUser, qid, answer))
+        })
+    }
+};

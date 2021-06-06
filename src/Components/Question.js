@@ -11,6 +11,13 @@ const Question = (props) => {
     } else if (props.showQuestion  === 'unanswered' && voted === true) {
         return false;
     }
+    let link = '';
+    if(props.showQuestion === 'answered'){
+        link = `/question/${id}/results`
+    } else if (props.showQuestion  === 'unanswered') {
+        link = `/question/${id}`
+    }
+
     return(
         <div className="card mb-4">
             <h5 className="card-header">{name} asks would you rather...</h5>
@@ -21,7 +28,7 @@ const Question = (props) => {
                 <div className="infoProfile-holder">
                     <h5 className="card-title">Would You rather</h5>
                     <p className="card-text">{optionOne.text} or {optionTwo.text}</p>
-                    <Link to="/" className="btn">View Poll</Link>
+                    <Link to={link} className="btn">View Poll</Link>
                 </div>
             </div>
 
@@ -30,9 +37,9 @@ const Question = (props) => {
 };
 function mapStateToProps(state, {id, showQuestions}){
     const question = state.AllQuestions.questions[id];
-    console.log(state)
     return{
-        question: formatQuestion(question, state.users.users[question.author], state.authenticated.loggedInUser.id)
+        question: formatQuestion(question, state.users.users[question.author], state.authenticated.loggedInUser.id),
+        showQuestions
     }
 
 }
