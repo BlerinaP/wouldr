@@ -1,11 +1,11 @@
 import React from "react";
-import {handleLogout} from "../Redux/Actions";
+import {Logout} from "../Redux/Actions";
 import {connect} from "react-redux";
 import {Redirect} from 'react-router-dom';
 
-class Logout extends React.Component{
+class LogoutApp extends React.Component{
     componentDidMount() {
-        this.props.dispatch(handleLogout())
+        this.props.dispatch(Logout())
     }
     render(){
         return(
@@ -13,4 +13,4 @@ class Logout extends React.Component{
         )
     }
 }
-export default connect()(Logout)
+export default connect()(LogoutApp)

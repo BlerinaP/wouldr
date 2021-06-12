@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {handleAddingQstAnsw} from "../Redux/Actions";
 import {Redirect }from "react-router-dom"
+import NotFound from "./NotFound";
 
 
 
@@ -33,9 +34,15 @@ class Poll extends React.Component{
         const {name, avatarURL} = this.props.author;
 
         const redirect = `/question/${id}/results`
+
         if(this.state.submited === true){
             return  <Redirect to={redirect}/>;
         }
+        if(this.props.notFound === true){
+            return  <NotFound/>
+        }
+
+
         return(
             <div className="poll-container">
                 <div className="container pt-5">
@@ -43,7 +50,7 @@ class Poll extends React.Component{
                         <h5 className="card-header">{name} asks would you rather...</h5>
                         <div className="card-body d-flex align-items-center">
                             <div className="profileImage-holder-poll">
-                                <img src={avatarURL} alt=""/>
+                                <img src={avatarURL} alt="avatar"/>
                             </div>
                             <div className="infoProfile-holder m-auto">
                                 <h5 className="card-title">Would You rather</h5>
@@ -68,19 +75,25 @@ class Poll extends React.Component{
 }
 function mapStateToProps(state, props) {
     const {id} = props.match.params;
-    let questions = state.AllQuestions.questions
+    let questions = state.AllQuestions;
+
+
 
     let detailsQuestion = "";
     let authorDetails = "";
+    let notFound = true;
     if (questions[id] !== undefined) {
+        notFound = false;
         detailsQuestion = questions[id];
-        authorDetails = state.users.users[detailsQuestion['author']]
+        authorDetails = state.users[detailsQuestion['author']]
     }
+
     return {
         id,
         question: detailsQuestion,
         author: authorDetails,
-        authedUser: state.authenticated.loggedInUser.id
+        authedUser: state.authenticated.loggedInUser.id,
+        notFound: notFound
     }
 }
 export default connect(mapStateToProps)(Poll)

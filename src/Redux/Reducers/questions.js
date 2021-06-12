@@ -5,7 +5,7 @@ export const AllQuestions = (state = {}, action) =>{
         case GET_QUESTIONS:
             return{
                 ...state,
-                questions: action.payload
+                ...action.payload
             };
         case ADD_QUESTION:
             return{
@@ -16,10 +16,10 @@ export const AllQuestions = (state = {}, action) =>{
             return{
                 ...state,
                 [action.qid] : {
-                    ...state.questions[action.qid],
+                    ...state[action.qid],
                     [action.answer]:{
-                        ...state.questions[action.qid][action.answer],
-                        votes: state.questions[action.qid][action.answer].votes.concat([action.authedUser])
+                        ...state[action.qid][action.answer],
+                        votes: state[action.qid][action.answer].votes.concat([action.authedUser])
                     }
                 }
             };

@@ -5,19 +5,16 @@ import Login from "./Components/Login";
 import NewQuestion from "./Components/NewQuestion";
 import LeaderBoard from "./Components/LeaderBoard";
 import Poll from "./Components/Poll";
-import Logout from "./Components/Logout";
+import LogoutApp from "./Components/Logout";
 import NavBar from "./Components/Nav";
 import ResPoll from "./Components/Res";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
-import {getAllQuestions} from "./Redux/Actions";
 import ProtectedR from "./helperFunctions/protectedR";
+import NotFound from "./Components/NotFound";
 
 class App extends React.Component{
-    componentDidMount() {
-        this.props.dispatch(getAllQuestions());
-    }
     render(){
         return (
             <div className="App">
@@ -30,7 +27,8 @@ class App extends React.Component{
                         <ProtectedR  path="/question/:id"  exact component={connect(mapStateToProps)(Poll)} authed={this.props.authed}/>
                         <ProtectedR path="/question/:id/results" exact component={connect(mapStateToProps)(ResPoll)} authed={this.props.authed}/>
                         <Route path="/login" exact component={withRouter(Login)}/>
-                        <Route path="/logout" exact component={Logout}/>
+                        <Route path="/logout" exact component={withRouter(LogoutApp)}/>
+                        <Route component={NotFound}/>
                     </Switch>
                 </div>
             </div>

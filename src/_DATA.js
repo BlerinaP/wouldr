@@ -4,7 +4,6 @@ let users = {
     name: 'Sarah Edo',
     avatarURL: "https://images.unsplash.com/photo-1563296102-c5f9255af9dd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" ,
     answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
       "am8ehyc8byjqgar0jgpub9": 'optionTwo',
       "loxhs1bqm25b708cmbf3g": 'optionTwo'
@@ -27,7 +26,6 @@ let users = {
     avatarURL: "https://images.unsplash.com/photo-1563296102-c5f9255af9dd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" ,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
-      "vthrdm985a262al8qx3do": 'optionTwo',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
@@ -40,7 +38,7 @@ let questions = {
     author: 'sarahedo',
     timestamp: 1467166872634,
     optionOne: {
-      votes: ['sarahedo'],
+      votes: [],
       text: 'have horrible short term memory',
     },
     optionTwo: {
@@ -92,7 +90,7 @@ let questions = {
     author: 'tylermcginnis',
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['tylermcginnis'],
+      votes: [],
       text: 'find $50 yourself',
     },
     optionTwo: {
@@ -199,7 +197,6 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-
       res()
     }, 500)
   })

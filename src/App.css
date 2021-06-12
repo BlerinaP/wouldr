@@ -220,6 +220,39 @@ a.selected{
   justify-content: center;
   font-weight: 600;
 }
+.boxContainer{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid grey;
+  background-color: antiquewhite;
+  border-radius: 18px;
+  box-shadow: -1px 2px 15px -4px #fff5f0;
+  justify-content: space-between;
+  min-height: 150px;
+}
+.infoText{
+  margin-left: 50px;
+  text-align: left;
+}
+.score > h1{
+  font-size: 25px;
+}
+.score > span{
+  background-color: darkred;
+  color: white;
+  padding: 10px;
+  border-radius: 100%;
+}
+.infoText > h2{
+  font-size: 20px;
+}
+.infoText > div > p{
+  padding-right: 10px;
+}
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

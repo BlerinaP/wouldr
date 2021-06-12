@@ -45,7 +45,7 @@ class Home extends React.Component{
     }
 }
 const mapStateToProps = (state) => ({
-    questions: state.AllQuestions.questions,
+    questions: state.AllQuestions,
     authed: state.authenticated.authedUser,
 });
 export default connect(mapStateToProps)(Home);

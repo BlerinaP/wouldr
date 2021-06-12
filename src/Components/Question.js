@@ -36,9 +36,9 @@ const Question = (props) => {
     )
 };
 function mapStateToProps(state, {id, showQuestions}){
-    const question = state.AllQuestions.questions[id];
+    const question = state.AllQuestions[id];
     return{
-        question: formatQuestion(question, state.users.users[question.author], state.authenticated.loggedInUser.id),
+        question: formatQuestion(question, state.users[question.author], state.authenticated.loggedInUser.id),
         showQuestions
     }
 

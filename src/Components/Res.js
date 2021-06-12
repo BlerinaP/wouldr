@@ -1,16 +1,21 @@
 import React from "react"
 import {connect} from "react-redux";
+import NotFound from "./NotFound";
 
 const ResPoll = (props) => {
-
     const {name, avatarURL} = props.author;
     const {optionOne, optionTwo, id} = props.question;
+
+    if(props.notFound === true){
+        return  <NotFound/>
+    }
 
     let iVoted = optionOne.votes.includes(props.author.id) ? "optionOne" : "optionTwo";
 
     let total = optionOne.votes.length + optionTwo.votes.length;
     let OptionOneVotes = Math.round((optionOne.votes.length / total) * 100);
     let OptionTwoVotes = Math.round((optionTwo.votes.length / total) * 100);
+
 
     return(
         <div>
@@ -54,18 +59,21 @@ const ResPoll = (props) => {
 };
 function mapStateToProps(state, props) {
     const {id} = props.match.params;
-    let questions = state.AllQuestions.questions
+    let questions = state.AllQuestions
 
     let detailsQuestion = "";
-    let authorDetails = ""
+    let authorDetails = "";
+    let notFound = true;
     if (questions[id] !== undefined) {
+        notFound = false;
         detailsQuestion = questions[id];
-        authorDetails = state.users.users[detailsQuestion['author']]
+        authorDetails = state.users[detailsQuestion['author']]
     }
     return {
         id,
         question: detailsQuestion,
-        author: authorDetails
+        author: authorDetails,
+        notFound: notFound
     }
 }
 export default connect(mapStateToProps)(ResPoll)

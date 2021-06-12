@@ -52,13 +52,6 @@ export function Logout(){
     }
 }
 
-export function handleLogout(){
-    return(dispatch) => {
-        dispatch(Logout())
-    }
-}
-
-
 export function allQuestionsReceived(questions){
     return{
         type: GET_QUESTIONS,
@@ -78,14 +71,20 @@ export function addQuestion(question){
     }
 }
 
+export function addUserQst(question){
+    return{
+        type: ADD_QUESTION_USER,
+        question
+    }
+}
+
 export function handleAddingQuestion (optionOneText, optionTwoText, cb){
-    console.log(optionOneText, optionTwoText)
     return(dispatch, getState) => {
         const {authenticated} = getState();
         const author = authenticated.loggedInUser.id;
         saveQuestion({optionOneText, optionTwoText ,author}).then((question) => {
             dispatch(addQuestion(question));
-            dispatch(addUQuestion(question))
+            dispatch(addUserQst(question))
         }).then(cb)
     }
 }
@@ -112,6 +111,8 @@ export const handleAddingQstAnsw = (qid, answer) => {
     return(dispatch, getState) => {
         const {authenticated} = getState();
         const authedUser = authenticated.loggedInUser.id;
+
+
         saveQuestionAnswer({authedUser, qid: qid, answer: answer}).then(() => {
             dispatch(saveQuestionAnsw(authedUser, qid, answer));
             dispatch(saveUserAnsw(authedUser, qid, answer))
